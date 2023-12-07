@@ -1,0 +1,9 @@
+---
+
+- name: Manage user ssh keys
+  loop: "{{ user_ssh_keys_list | flatten }}"
+  loop_control:
+    loop_var: user
+    label: "user: {{ user.name }}"
+  ansible.builtin.include_tasks:
+    file: tasks/sub-tasks/manage_user.yml

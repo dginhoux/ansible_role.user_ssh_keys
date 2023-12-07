@@ -1,0 +1,67 @@
+---
+
+
+- name: "Deploy key files {{ key.name }}"
+  when:
+    - key.state == "present"
+    - key.src_location is defined
+  block:
+    - name: "Deploy files for ssh keys {{ key.name }}"
+      with_items:
+        - "{{ key.name }}"
+        - "{{ key.name }}.pub"
+      ansible.builtin.copy:
+        src: "{{ key.src_location }}/{{ item }}"
+        dest: "{{ user.keys_folder }}/{{ item }}"
+        owner: "{{ user.name }}"
+        group: "{{ user.name }}"
+        mode: "0600"
+
+
+- name: "Remove key files {{ key.name }}"
+  when:
+    - key.state == "absent"
+  block:
+    - name: "Remove files for ssh keys {{ key.name }}"
+      with_items:
+        - "{{ key.name }}"
+        - "{{ key.name }}.pub"
+      ansible.builtin.file:
+        path: "{{ user.keys_folder }}/{{ item }}"
+        state: absent
+
+
+# - name: "Deploy key files {{ key.name }}"
+#   when:
+#     - key.state == "present"
+#     - key.src_public_file is defined
+#     - key.src_private_file is defined
+#   block:
+#     - name: "Deploy public file for ssh keys {{ key.name }}"
+#       ansible.builtin.copy:
+#         src: "{{ key.src_public_file }}"
+#         dest: "{{ user.keys_folder }}/{{ key.name }}.pub"
+#         owner: "{{ user.name }}"
+#         group: "{{ user.name }}"
+#         mode: "0600"
+#     - name: "Deploy private file for ssh keys {{ key.name }}"
+#       ansible.builtin.copy:
+#         src: "{{ key.src_private_file }}"
+#         dest: "{{ user.keys_folder }}/{{ key.name }}"
+#         owner: "{{ user.name }}"
+#         group: "{{ user.name }}"
+#         mode: "0600"
+
+
+# - name: "Remove key files {{ key.name }}"
+#   when:
+#     - key.state == "absent"
+#   block:
+#     - name: "Remove public file for ssh keys {{ key.name }}"
+#       ansible.builtin.file:
+#         path: "{{ user.keys_folder }}/{{ key.name }}.pub"
+#         state: absent
+#     - name: "Remove private file for ssh keys {{ key.name }}"
+#       ansible.builtin.copy:
+#         path: "{{ user.keys_folder }}/{{ key.name }}"
+#         state: absent

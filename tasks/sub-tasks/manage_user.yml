@@ -1,0 +1,22 @@
+---
+
+- name: "Create ssh keys folder for {{ user.name }}"
+  when:
+    - user.keys_folder is defined
+  ansible.builtin.file:
+    path: "{{ user.keys_folder }}"
+    state: directory
+    mode: "0700"
+
+
+- name: "Manage ssh keys for {{ user.name }}"
+  when:
+    - user.keys_folder is defined
+    - user.keys_files is defined
+    - user.keys_files is iterable
+  loop: "{{ user.keys_files | flatten }}"
+  loop_control:
+    loop_var: key
+    label: "key: {{ key.name }}"
+  ansible.builtin.include_tasks:
+    file: tasks/sub-tasks/manage_user_keys.yml
