@@ -35,12 +35,12 @@ None.
 #### ANSIBLE GALAXY
 
 ```shell
-ansible-galaxy install dginhoux.user_ssh_key
+ansible-galaxy install dginhoux.user_ssh_keys
 ```
 #### GIT
 
 ```shell
-git clone https://github.com/dginhoux/ansible_role.user_ssh_key dginhoux.user_ssh_key
+git clone https://github.com/dginhoux/ansible_role.user_ssh_keys dginhoux.user_ssh_keys
 ```
 
 
@@ -51,9 +51,9 @@ git clone https://github.com/dginhoux/ansible_role.user_ssh_key dginhoux.user_ss
 ```yaml
 - hosts: all
   roles:
-    - name: start role dginhoux.user_ssh_key
+    - name: start role dginhoux.user_ssh_keys
       ansible.builtin.include_role:
-        name: dginhoux.user_ssh_key
+        name: dginhoux.user_ssh_keys
 ```
 
 
