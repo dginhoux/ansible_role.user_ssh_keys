@@ -13,17 +13,12 @@ This source folder must be secured, in my case the folder is unsecure, but the c
 
 #### SUPPORTED PLATFORMS
 
-This role is tested on the following platforms.<br />
-
 | Platform | Versions |
 |----------|----------|
-| ArchLinux | all |
 | Debian | all |
 | EL | all |
 | Fedora | all |
 | Ubuntu | all |
-
-
 
 #### ANSIBLE VERSION
 
@@ -67,6 +62,7 @@ git clone https://github.com/dginhoux/ansible_role.user_ssh_key dginhoux.user_ss
 #### DEFAULT VARIABLES
 
 Default variables defined in `defaults/main.yml` : 
+```yaml
 user_ssh_keys_list:
   - name: sample
     keys_folder: /home/sample/.ssh
@@ -74,12 +70,9 @@ user_ssh_keys_list:
       - name: id_rsa
         state: present
         src_location: "files/sample"
-```yaml
-
-
-
-
 ```
+
+
 #### DEFAULT OS SPECIFIC VARIABLES
 
 Those variables files are located in `vars/*.yml` are used to handle OS differences.<br />
