@@ -1,9 +1,13 @@
 ---
 
-user_ssh_keys_list:
-  - name: sample
-    keys_folder: /home/sample/.ssh
-    keys_files:
-      - name: id_rsa
-        state: present
-        src_location: "files/sample"
+# user_ssh_keys_list:
+#   - name: sample
+#     keys_folder: /home/sample/.ssh
+#     keys_files:
+#       - name: id_rsa
+#         state: present
+#         src_location: "files/sample"
+
+user_ssh_keys_list: []
+user_ssh_keys_list_host: []
+user_ssh_keys_list_group: []

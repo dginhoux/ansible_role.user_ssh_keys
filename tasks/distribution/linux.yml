@@ -1,7 +1,7 @@
 ---
 
 - name: Manage user ssh keys
-  loop: "{{ user_ssh_keys_list | flatten }}"
+  loop: "{{ user_ssh_keys_list + user_ssh_keys_list_host + user_ssh_keys_list_group | flatten(levels=1) }}"
   loop_control:
     loop_var: user
     label: "user: {{ user.name }}"
