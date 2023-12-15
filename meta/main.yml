@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-  role_name: user_ssh_key
+  role_name: user_ssh_keys
   description: |
     This ansible role deploy ssh_keys for users in their home folder.
   author: Dany GINHOUX
