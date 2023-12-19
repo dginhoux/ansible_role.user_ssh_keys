@@ -49,12 +49,14 @@ git clone https://github.com/dginhoux/ansible_role.user_ssh_keys dginhoux.user_s
 #### EXAMPLE PLAYBOOK
 
 ```yaml
-- hosts: all
+- name: Playbook
+  hosts: all
   roles:
-    - name: start role dginhoux.user_ssh_keys
+    - name: Start role dginhoux.user_ssh_keys
       ansible.builtin.include_role:
         name: dginhoux.user_ssh_keys
 ```
+
 
 
 ## VARIABLES
@@ -70,7 +72,13 @@ user_ssh_keys_list:
       - name: id_rsa
         state: present
         src_location: "files/sample"
+
+user_ssh_keys_list_host: []
+user_ssh_keys_list_group: []
 ```
+
+NOTE : Theses 3 lists `user_ssh_keys_list`, `user_ssh_keys_list_group` and `user_ssh_keys_list_host` are merged. <br />
+You can use the host and group lists to specify users per host or group off hosts.
 
 
 #### DEFAULT OS SPECIFIC VARIABLES
