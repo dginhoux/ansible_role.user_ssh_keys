@@ -51,7 +51,7 @@ git clone https://github.com/dginhoux/ansible_role.user_ssh_keys dginhoux.user_s
 ```yaml
 - name: Playbook
   hosts: all
-  roles:
+  tasks:
     - name: Start role dginhoux.user_ssh_keys
       ansible.builtin.include_role:
         name: dginhoux.user_ssh_keys
@@ -63,7 +63,11 @@ git clone https://github.com/dginhoux/ansible_role.user_ssh_keys dginhoux.user_s
 
 #### DEFAULT VARIABLES
 
-Default variables defined in `defaults/main.yml` : 
+Default variables defined in `defaults/main.yml`
+
+
+#### EXAMPLES VARIABLES
+
 ```yaml
 user_ssh_keys_list:
   - name: sample
